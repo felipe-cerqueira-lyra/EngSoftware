@@ -21,6 +21,11 @@ Site para hostear arquivos diversos (imagens, vídeos, docs, txts, pdf, planilha
 . Agrupamento dos downloads por usuário \
 . Gerenciamento do upload (mudança de nome, atulalização do arquivo, remoção) 
 
+### Stack
+. HTML/CSS/Bootstrap \
+. Flask (ou Django) \
+. SQLAlchemy (MongoDB)
+
 ## Drive:
 https://drive.google.com/drive/folders/1V2Nt-u7RWSFU3PoG9cj7N4yyMT0ryuVE?usp=sharing
 
