@@ -19,6 +19,8 @@ def list_files():
 
 @api.route('/files/<file_name>', methods=['GET'])
 def get_file(file_name):
+    # as_attachment = True (Download file)
+    # as_attachment = False (Open file (browser))
     return send_from_directory(DIRECTORY, file_name, as_attachment=True)
 
 
