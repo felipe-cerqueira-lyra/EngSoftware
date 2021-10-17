@@ -19,7 +19,7 @@ def list_files():
 
 @api.route('/files/<file_name>', methods=['GET'])
 def get_file(file_name):
-    pass
+    return send_from_directory(DIRECTORY, file_name, as_attachment=True)
 
 
 @api.route('/files', methods=['POST'])
