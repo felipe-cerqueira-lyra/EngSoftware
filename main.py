@@ -9,7 +9,12 @@ api = Flask(__name__)
 
 @api.route('/files', methods=['GET'])
 def list_files():
-    pass
+    files = list()
+    for file in os.listdir(DIRECTORY):
+        file_path = os.path.join(DIRECTORY, file)
+        if os.path.isfile(file_path):
+            files.append(file)
+    return jsonify(files)
 
 
 @api.route('/files/<file_name>', methods=['GET'])
