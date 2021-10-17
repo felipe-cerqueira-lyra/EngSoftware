@@ -26,7 +26,10 @@ def get_file(file_name):
 
 @api.route('/files', methods=['POST'])
 def post_file():
-    pass
+    file = request.files.get('my_file')
+    file_name = file.filename
+    file.save(os.path.join(DIRECTORY, file_name))
+    return '', 201
 
 
 if __name__ == '__main__':
