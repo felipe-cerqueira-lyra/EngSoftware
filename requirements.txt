@@ -1,3 +1,8 @@
-flask
+flask~=2.0.2
+Flask-SQLAlchemy
 flask-login
-flask-sqlalchemy
+pip~=21.1.2
+wheel~=0.36.2
+setuptools~=57.0.0
+Werkzeug~=2.0.2
+SQLAlchemy~=1.4.25
