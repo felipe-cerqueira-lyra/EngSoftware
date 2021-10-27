@@ -14,9 +14,9 @@ Site para hostear arquivos diversos (imagens, vídeos, docs, txts, pdf, planilha
 . Upload do arquivo \
 . Download do arquivo \
 . Vizualização do número de downloads, data e tamanho \
-. Vizualização dos arquivos separados por tipo, imagens, vídeos \
+. Vizualização dos arquivos separados por tipo (imagens, vídeos, etc) \
 . Sistema de usuários \
-. Gerenciamento de arquivos (exclusão, renomear)
+. Gerenciamento de arquivos (exclusão, renomear) \
 . Arquivos recentes (Histórico) 
 
 ### Stack
