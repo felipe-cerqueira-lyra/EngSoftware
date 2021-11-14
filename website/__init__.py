@@ -12,6 +12,8 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
+    from .models import File
+
     create_database(app)
     return app
 
