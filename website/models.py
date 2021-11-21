@@ -1,14 +1,8 @@
 from . import db
 
 
-class File(db.Model):
-    """
-    This class represents a File
-    """
-    _id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(300))
-    data = db.Column(db.LargeBinary)
-
-    def __init__(self, name, data):
-        self.name = name
-        self.data = data
+class Img(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(300), nullable=True)
+    img = db.Column(db.Text, unique=True, nullable=False)
+    mimetype = db.Column(db.Text, nullable=True)
