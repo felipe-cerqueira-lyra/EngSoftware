@@ -2,8 +2,8 @@ from website import create_app
 from flask import request, Response
 from werkzeug.utils import secure_filename
 
-from website.db import db
-from website.models import Img
+from website.database.db import db
+from website.database.models import Img
 
 app = create_app()
 
