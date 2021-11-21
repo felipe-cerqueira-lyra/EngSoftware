@@ -1,9 +1,9 @@
 from os import path
 from flask import Flask
 
-from website.db import db
+from website.database.db import db
 
-DB_NAME = "database.db"
+DB_NAME = "database/database.db"
 
 
 def create_app():
