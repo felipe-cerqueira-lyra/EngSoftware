@@ -1,4 +1,4 @@
-from website import db
+from website.database.db import db
 
 
 class Img(db.Model):
