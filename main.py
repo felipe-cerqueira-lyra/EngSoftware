@@ -1,5 +1,5 @@
 from website import create_app
-from flask import request, Response
+from flask import Flask, redirect, url_for, render_template, request, Response
 from werkzeug.utils import secure_filename
 
 from website.database.db import db
@@ -7,10 +7,13 @@ from website.database.models import Img
 
 app = create_app()
 
-
 @app.route('/')
 def home():
-    return 'Home Page'
+    return render_template("index.html")
+
+@app.route('/uploadf')
+def uploadf():
+    return render_template("upload.html")
 
 
 @app.route('/upload', methods=['POST'])
