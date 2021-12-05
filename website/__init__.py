@@ -12,7 +12,7 @@ def create_app(test_config=None):
         # SECRET_KEY = 'C88BA7BB9E343A7BA582E90DCBD1B958A210059069AD58C7B29EF1763BAC2634'
         SECRET_KEY = 'dev',
         SQLALCHEMY_DATABASE_URI = f'sqlite:///{DB_NAME}',
-        SQLALCHEMY_TRACK_MODIFICATIONS = False
+        SQLALCHEMY_TRACK_MODIFICATIONS = False,
         UPLOAD_FOLDER = "database/files"
     )
 
