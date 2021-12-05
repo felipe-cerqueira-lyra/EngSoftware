@@ -1,10 +1,13 @@
 from urllib.request import urlopen
 from flask import Blueprint, render_template, request, redirect, url_for, g
 
-from website.database.db import db
-from website.database.models import Img
+from website.database.db import db, Img
+# from website.database.models import Img
+from uuid import uuid4, uuid5, NAMESPACE_DNS
+import os
 
 bp = Blueprint('up', __name__, url_prefix='/up')
+# UPLOAD_FOLDER = os.path.join(app.instance_path, 'database/files')
 
 @bp.route('/', methods=['POST', 'GET'])
 def upload_page():
@@ -13,8 +16,14 @@ def upload_page():
 @bp.route('/register', methods=['POST'])
 def register_file():
     file = request.files["file"]
-    file.save(file.filename)
-    return redirect(url_for('up.upload_page'))
+    id_ = str(uuid5(NAMESPACE_DNS, str(uuid4())+file.filename))
+    name_ = file.filename
+    mime_type_ = file.mimetype
+    img = Img(id=id_, name=name_, mimetype=mime_type_)
+    file.save("./website/database/files/" + name_)
+    db.session.add(img)
+    db.session.commit()
+    return id_
 
 @bp.route('/display', methods=['GET'])
 def display():

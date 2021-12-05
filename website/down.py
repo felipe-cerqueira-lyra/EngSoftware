@@ -1,8 +1,8 @@
 from urllib.request import urlopen
 from flask import Blueprint, render_template, request, redirect, url_for, g
 
-from website.database.db import db
-from website.database.models import Img
+from website.database.db import db, Img
+# from website.database.models import Img
 
 bp = Blueprint('down', __name__, url_prefix='/down')
 
@@ -18,4 +18,4 @@ def download_file(id):
         img = Img.query.filter_by(id=id).first()
         if not img:
             return 'No img with that id', 404
-        return Response(img.img, mimetype=img.mimetype)
+        return (img.name)
