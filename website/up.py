@@ -7,15 +7,21 @@ from website.database.models import Img
 bp = Blueprint('up', __name__, url_prefix='/up')
 
 @bp.route('/', methods=['POST', 'GET'])
-def download_page():
-    return("Hello World from Up!")
+def upload_page():
+    return(render_template("upload.html.jinja"))
 
+@bp.route('/register', methods=['POST'])
+def register_file():
+    file = request.files["file"]
+    file.save(file.filename)
+    return redirect(url_for('up.upload_page'))
 
+@bp.route('/display', methods=['GET'])
+def display():
+    f = request.files['myFile']
+    filename = secure_filename(f.filename)
 
-@bp.route('/<id>', methods=['POST', 'GET'])
-def upload_file(id):
-    if request.method == 'GET':
-        img = Img.query.filter_by(id=id).first()
-        if not img:
-            return 'No img with that id', 404
-        return Response(img.img, mimetype=img.mimetype)
+    f.save(app.config['UPLOAD_FOLDER'] + filename)
+
+    file = open(app.config['UPLOAD_FOLDER'] + filename,"r")
+    content = file.read()
