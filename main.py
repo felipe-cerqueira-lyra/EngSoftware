@@ -1,9 +1,12 @@
+import os
 from website import create_app
-from flask import Flask, redirect, url_for, render_template, request, Response
+from flask import Flask, redirect, url_for, render_template, request, Response, send_from_directory
 from werkzeug.utils import secure_filename
 
 from website.database.db import db
 from website.database.models import Img
+
+DOWNLOAD_DIRECTORY = 'E:\\UFMG (ANB)\\Eng Software\\TP1\\EngSoftware\\static\\midia' # Diretorio local para os arquivos, lembrar de alterar dependendo da máquina
 
 app = create_app()
 
@@ -41,6 +44,24 @@ def get_img(id):
         return 'No img with that id', 404
     return Response(img.img, mimetype=img.mimetype)
 
+@app.route('/files/<file_name>', methods=['GET'])
+def get_file(file_name):
+    # as_attachment = True (Download file)
+    # as_attachment = False (Open file (browser))
+    return send_from_directory(DOWNLOAD_DIRECTORY, file_name, as_attachment=True)
+
+@app.route('/download/<file_name>')
+def download(file_name):
+    name, extension = os.path.splitext(file_name)
+    if (extension == '.mp3'):
+        type = 'audio'
+    elif (extension == '.mp4'):
+        type = 'video'
+    else :
+        type = 'img'
+    
+    path = 'midia/'+ file_name
+    return render_template('/download.html', archive_type = type, archive = url_for('static', filename = path), file_input = file_name)
 
 if __name__ == '__main__':
     app.run(debug=True)
