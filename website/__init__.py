@@ -28,6 +28,8 @@ def create_app(test_config=None):
 
     from . import down
     app.register_blueprint(down.bp)
+    from . import up
+    app.register_blueprint(down.bp)
 
 
     @app.route('/')
