@@ -4,16 +4,16 @@ from flask import Blueprint, render_template, request, redirect, url_for, g
 from website.database.db import db
 from website.database.models import Img
 
-bp = Blueprint('down', __name__, url_prefix='/down')
+bp = Blueprint('up', __name__, url_prefix='/up')
 
 @bp.route('/', methods=['POST', 'GET'])
 def download_page():
-    return("Hello World from Down!")
+    return("Hello World from Up!")
 
 
 
 @bp.route('/<id>', methods=['POST', 'GET'])
-def download_file(id):
+def upload_file(id):
     if request.method == 'GET':
         img = Img.query.filter_by(id=id).first()
         if not img:

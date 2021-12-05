@@ -1,15 +1,20 @@
 import os
 from flask import Flask, render_template
 
+from website.database.db import db_init, DB_NAME
+
+
 
 def create_app(test_config=None):
+    app = Flask(__name__)
     app = Flask(__name__,instance_relative_config=True)
     app.config.from_mapping(
+        # SECRET_KEY = 'C88BA7BB9E343A7BA582E90DCBD1B958A210059069AD58C7B29EF1763BAC2634'
         SECRET_KEY = 'dev',
+        SQLALCHEMY_DATABASE_URI = f'sqlite:///{DB_NAME}',
+        SQLALCHEMY_TRACK_MODIFICATIONS = False
     )
-    toolbar = DebugToolbarExtension(app)
-    app.config['DEBUG_TB_PANELS'] += ('flask_mongoengine.panels.MongoDebugPanel',)
-    app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+
     if test_config == None:
         app.config.from_pyfile('config.py', silent=True)
     else:
@@ -19,14 +24,14 @@ def create_app(test_config=None):
     except OSError as e:
         pass
 
-    # from . import db
-    # db.app_init(app)
+    db_init(app)
 
-    from . import down.py
-    app.register_blueprint(library.bp)
+    from . import down
+    app.register_blueprint(down.bp)
+
 
     @app.route('/')
     def index():
-        return render_template('home.html.jinja')
+        return ('Hello World')
 
     return app
