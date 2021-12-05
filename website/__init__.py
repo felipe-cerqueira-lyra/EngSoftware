@@ -13,6 +13,7 @@ def create_app(test_config=None):
         SECRET_KEY = 'dev',
         SQLALCHEMY_DATABASE_URI = f'sqlite:///{DB_NAME}',
         SQLALCHEMY_TRACK_MODIFICATIONS = False
+        UPLOAD_FOLDER = "database/files"
     )
 
     if test_config == None:
