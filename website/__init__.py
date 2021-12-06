@@ -13,7 +13,7 @@ def create_app(test_config=None):
         SECRET_KEY = 'dev',
         SQLALCHEMY_DATABASE_URI = f'sqlite:///{DB_NAME}',
         SQLALCHEMY_TRACK_MODIFICATIONS = False,
-        UPLOAD_FOLDER = "database/files"
+        UPLOAD_FOLDER = app.root_path + '/database/static/'
     )
 
     if test_config == None:
@@ -25,6 +25,8 @@ def create_app(test_config=None):
     except OSError as e:
         pass
 
+    from website.database import db
+    app.register_blueprint(db.bp)
     db_init(app)
 
     from . import down
