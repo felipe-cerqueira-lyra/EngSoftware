@@ -1,9 +1,12 @@
 from os import path
 
 from flask_sqlalchemy import SQLAlchemy
+from flask import Blueprint
 
 DB_NAME = "database/database.db"
 db = SQLAlchemy()
+
+bp = Blueprint('database', __name__, static_folder='static', url_prefix='/database')
 
 class Img(db.Model):
     id = db.Column(db.String(300), primary_key=True)
