@@ -13,7 +13,7 @@
                     <video controls>
                         <source src="{{url_for('database.static', filename=file.name)}}" type="video/mp4">
                     </video>
-            {% elif (archive_type == 'img') : %}
+            {% elif (archive_type == 'image') : %}
                     <div class="card-header bg-primary">
                         {{file.name}}
                     </div>
