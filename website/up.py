@@ -1,5 +1,5 @@
 from urllib.request import urlopen
-from flask import Blueprint, render_template, request, redirect, url_for, g
+from flask import Blueprint, current_app, render_template, request, redirect, url_for, g
 
 from website.database.db import db, Img
 # from website.database.models import Img
@@ -20,7 +20,7 @@ def register_file():
     name_ = file.filename
     mime_type_ = file.mimetype
     img = Img(id=id_, name=name_, mimetype=mime_type_)
-    file.save("./website/database/files/" + name_)
+    file.save(current_app.config["UPLOAD_FOLDER"] + name_)
     db.session.add(img)
     db.session.commit()
     return id_
