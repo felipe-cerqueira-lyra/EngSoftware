@@ -10,16 +10,21 @@ Thales Henrique
 ## Descrição
 Site para hostear arquivos diversos (imagens, vídeos, docs, txts, pdf, planilhas etc).
 
+## to run:
+- export FLASK_APP=website
+- export FLASK_ENV=development
+- flask run
+
 ### Features
 . Upload do arquivo \
 . Download do arquivo \
 . Vizualização do número de downloads, data e tamanho \
-. Vizualização de imaens, e vídeos 
+. Vizualização de imaens, e vídeos
 
 ### Possíveis Features
 . Criação de usuários \
 . Agrupamento dos downloads por usuário \
-. Gerenciamento do upload (mudança de nome, atulalização do arquivo, remoção) 
+. Gerenciamento do upload (mudança de nome, atulalização do arquivo, remoção)
 
 ### Stack
 . HTML/CSS/Bootstrap \
