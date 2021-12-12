@@ -25,12 +25,16 @@ def create_app(test_config=None):
 
     from website.database import db
     app.register_blueprint(db.bp)
-    db_init(app)
+    db = db_init(app)
 
     from . import down
     app.register_blueprint(down.bp)
     from . import up
     app.register_blueprint(up.bp)
+
+    @app.before_first_request
+    def create_tables():
+        db.create_all()
 
     @app.route('/')
     def upload():
