@@ -1,9 +1,21 @@
 {% extends "base.html" %}
 {% block title %} Upload {% endblock %}
 {% block content %}
-<div class="central">
-    <input type="file" />
-    <button type="submit">Enviar</button>
+<div class="center">
+    <ul style="justify-content: center;">
+        <li><div class="child"><img src=" {{url_for('static', filename='images/anchor-upload.png')}}" alt="L"></div></li>
+        <li>
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile02">
+                  <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Escolher Arquivo</label>
+                </div>
+                <div class="input-group-append">
+                  <span class="input-group-text" id="inputGroupFileAddon02">Enviar</span>
+                </div>
+            </div>
+        </li>
+    </ul>
 </div>
 
 {% endblock %}
