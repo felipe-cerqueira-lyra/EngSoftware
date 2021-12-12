@@ -1,3 +1,5 @@
+import os
+
 from flask import Blueprint, current_app, render_template, request, send_from_directory
 
 from website.database.models import Files
@@ -22,4 +24,5 @@ def download_file(id):
         file_ = Files.query.filter_by(id=id).first()
         if not file_:
             return 'No img with id %s' % id
-        return send_from_directory(current_app.config["UPLOAD_FOLDER"], filename=file_.name, as_attachment=True)
+        uploads = os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'])
+        return send_from_directory(directory=uploads, path=current_app.static_folder, filename=file_.name, as_attachment=True)
