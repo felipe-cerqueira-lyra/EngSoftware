@@ -14,7 +14,6 @@ def db_init(app):
     db.init_app(app)
     if not path.exists('website/' + DB_NAME):
         db.create_all(app=app)
-        db.session.commit()
 
     if not path.exists('website/' + UP_FOLDER):
         mkdir('website/' + UP_FOLDER)
