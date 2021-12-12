@@ -23,7 +23,8 @@ def register_file():
     file.save(current_app.config["UPLOAD_FOLDER"] + name_)
     db.session.add(file_)
     db.session.commit()
-    return id_
+    type = file_.mimetype.split('/')[0]
+    return render_template("download.html.jinja", archive_type=type, file=file_)
 
 @bp.route('/display', methods=['GET'])
 def display():
