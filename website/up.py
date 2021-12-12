@@ -1,6 +1,6 @@
 from flask import Blueprint, current_app, render_template, request
 from website.database.db import db
-from website.database.models import Files
+from website.database.models import File
 from uuid import uuid4, uuid5, NAMESPACE_DNS
 
 bp = Blueprint('up', __name__, url_prefix='/up')
@@ -17,7 +17,7 @@ def register_file():
     id_ = str(uuid5(NAMESPACE_DNS, str(uuid4()) + file.filename))
     name_ = file.filename
     mime_type_ = file.mimetype
-    file_ = Files(id=id_, name=name_, mimetype=mime_type_)
+    file_ = File(id=id_, name=name_, mimetype=mime_type_)
     file.save(current_app.config["UPLOAD_FOLDER"] + name_)
     db.session.add(file_)
     db.session.commit()
