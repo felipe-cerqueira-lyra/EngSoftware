@@ -31,10 +31,8 @@ def create_app(test_config=None):
     app.register_blueprint(down.bp)
     from . import up
     app.register_blueprint(up.bp)
-    from . import signin
-    app.register_blueprint(signin.bp)
-    from . import signup
-    app.register_blueprint(signup.bp)
+    from . import auth
+    app.register_blueprint(auth.bp)
 
     @app.before_first_request
     def create_tables():
