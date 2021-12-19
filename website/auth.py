@@ -9,11 +9,11 @@ def logout():
     return "<p>Logout<\p>"
 
 
-@bp.route('/signup')
+@bp.route('/signup', methods=['GET', 'POST'])
 def signup_page():
     return render_template("signup.html.jinja")
 
 
-@bp.route('/signin')
+@bp.route('/signin', methods=['GET', 'POST'])
 def signin_page():
     return render_template("signin.html.jinja")
