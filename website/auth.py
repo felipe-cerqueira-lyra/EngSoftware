@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -11,7 +11,15 @@ def logout():
 
 @bp.route('/signup', methods=['GET', 'POST'])
 def signup_page():
-    return render_template("signup.html.jinja")
+    if request.method == 'POST':
+        name = request.form.get('name')
+        last_name = request.form.get('last_name')
+        user = request.form.get('user')
+        mail = request.form.get('mail')
+        passw = request.form.get('pass')
+        conf_passw = request.form.get('confirm_password')
+
+    return render_template("signup.html")
 
 
 @bp.route('/signin', methods=['GET', 'POST'])
