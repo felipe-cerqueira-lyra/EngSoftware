@@ -42,6 +42,6 @@ def create_app(test_config=None):
 
     @app.route('/')
     def upload():
-        return render_template("upload.html.jinja")
+        return render_template("upload.html")
 
     return app

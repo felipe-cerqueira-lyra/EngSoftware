@@ -9,4 +9,4 @@ bp = Blueprint('signin', __name__, url_prefix='/signin')
 
 @bp.route('/signin')
 def signin_page():
-    return render_template("signin.html.jinja")
+    return render_template("signin.html")
