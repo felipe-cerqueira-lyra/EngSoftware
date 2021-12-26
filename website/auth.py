@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request
+from flask_login import login_user
+
 from website.database.db import db
 
 from website.database.models import User
@@ -24,6 +26,8 @@ def signup_page():
         new_user = User(first_name=first_name, last_name=last_name, user=user, email=email, password=password)
         db.session.add(new_user)
         db.session.commit()
+        login_user(new_user, remember=True)
+        return render_template("upload.html")
 
     return render_template("signup.html")
 
