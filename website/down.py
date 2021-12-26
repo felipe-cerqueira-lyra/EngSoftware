@@ -25,4 +25,4 @@ def download_file(id):
         if not file_:
             return 'No img with id %s' % id
         uploads = os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'])
-        return send_from_directory(directory=uploads, path=current_app.static_folder, filename=file_.name, as_attachment=True)
+        return send_from_directory(directory=uploads, filename=file_.name, as_attachment=True)
