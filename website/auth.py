@@ -22,7 +22,7 @@ def signup_page():
         email = request.form.get('mail')
         password = request.form.get('pass')
         conf_passw = request.form.get('confirm_password')
-        #TODO (Thales): Implement fields validation
+        # TODO (Thales): Implement fields validation
         new_user = User(first_name=first_name, last_name=last_name, user=user, email=email, password=password)
         db.session.add(new_user)
         db.session.commit()
