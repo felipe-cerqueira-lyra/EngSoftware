@@ -8,7 +8,7 @@ static_link = 'http://127.0.0.1:5000/down/'
 
 @bp.route('/', methods=['POST', 'GET'])
 def upload_page():
-    return render_template("upload.html.jinja")
+    return render_template("upload.html")
 
 
 @bp.route('/register', methods=['POST'])
@@ -23,7 +23,7 @@ def register_file():
     db.session.add(file_)
     db.session.commit()
     type = file_.mimetype.split('/')[0]
-    return render_template("download.html.jinja", archive_type=type, file=file_)
+    return render_template("download.html", archive_type=type, file=file_)
 
 
 @bp.route('/display', methods=['GET'])

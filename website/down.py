@@ -19,7 +19,7 @@ def download_file(id):
         if not file_:
             return 'No img with that id', 404
         type = file_.mimetype.split('/')[0]
-        return render_template("download.html.jinja", archive_type=type, file=file_)
+        return render_template("download.html", archive_type=type, file=file_)
     if request.method == 'POST':
         file_ = File.query.filter_by(id=id).first()
         if not file_:
