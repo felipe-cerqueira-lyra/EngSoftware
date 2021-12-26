@@ -25,13 +25,3 @@ def register_file():
     type = file_.mimetype.split('/')[0]
     return render_template("download.html", archive_type=type, file=file_)
 
-
-@bp.route('/display', methods=['GET'])
-def display():
-    f = request.files['myFile']
-    filename = secure_filename(f.filename)
-
-    f.save(app.config['UPLOAD_FOLDER'] + filename)
-
-    file = open(app.config['UPLOAD_FOLDER'] + filename, "r")
-    content = file.read()
