@@ -4,7 +4,8 @@ from website.database.models import File
 from uuid import uuid4, uuid5, NAMESPACE_DNS
 
 bp = Blueprint('up', __name__, url_prefix='/up')
-static_link = 'http://127.0.0.1:5000/down/'
+static_link = 'https://127.0.0.1:5000/down/'
+
 
 @bp.route('/', methods=['POST', 'GET'])
 def upload_page():
@@ -24,4 +25,3 @@ def register_file():
     db.session.commit()
     type = file_.mimetype.split('/')[0]
     return render_template("download.html", archive_type=type, file=file_)
-
