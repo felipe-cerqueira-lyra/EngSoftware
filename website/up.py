@@ -1,4 +1,6 @@
 from flask import Blueprint, current_app, render_template, request
+from flask_login import current_user
+
 from website.database.db import db
 from website.database.models import File
 from uuid import uuid4, uuid5, NAMESPACE_DNS
@@ -9,7 +11,7 @@ static_link = 'https://127.0.0.1:5000/down/'
 
 @bp.route('/', methods=['POST', 'GET'])
 def upload_page():
-    return render_template("upload.html")
+    return render_template("upload.html", user=current_user)
 
 
 @bp.route('/register', methods=['POST'])
@@ -24,4 +26,4 @@ def register_file():
     db.session.add(file_)
     db.session.commit()
     type = file_.mimetype.split('/')[0]
-    return render_template("download.html", archive_type=type, file=file_)
+    return render_template("download.html", archive_type=type, file=file_, user=current_user)
