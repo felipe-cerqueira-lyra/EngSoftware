@@ -34,21 +34,19 @@ def create_app(test_config=None):
     app.register_blueprint(up.bp)
     from . import auth
     app.register_blueprint(auth.bp)
+    from . import home
+    app.register_blueprint(home.bp)
 
     @app.before_first_request
     def create_tables():
         db.create_all()
 
     login_manager = LoginManager()
-    login_manager.login_view = 'auth.login'
+    login_manager.login_view = 'auth.signin_page'
     login_manager.init_app(app)
 
     @login_manager.user_loader
     def load_user(id):
         return User.query.get(int(id))
-
-    @app.route('/')
-    def upload():
-        return render_template("upload.html")
 
     return app
