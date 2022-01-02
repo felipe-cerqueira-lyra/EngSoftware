@@ -6,68 +6,68 @@
 <div class='d-flex justify-content-center'>
   <form method="POST">
   <div class="card">
-    <h5 class="card-header">Cadastro de Usuário</h5>
+    <h5 class="card-header">Registration</h5>
     <div class="card-body">
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="name">Nome</label><br>
+          <label for="name">Name</label><br>
           <input
               type="name"
               class="form-control"
               id="name"
               name="name"
-              placeholder="Nome"
+              placeholder="Name"
           />
         </div>
         <div class="form-group col-md-6">
-          <label for="surname">Sobrenome</label><br>
+          <label for="surname">Surname</label><br>
           <input
               type="surname"
               class="form-control"
               id="surname"
               name="surname"
-              placeholder="Sobrenome"
+              placeholder="surname"
           />
         </div>
       </div>
       <div class="form-group">
-        <label for="user">Usuário</label>
+        <label for="user">User</label>
         <input
             type="user"
             class="form-control"
             name="user"
             id="user"
-            placeholder="Usuário"
+            placeholder="User"
         />
       </div>
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">Mail</label>
         <input
             type="email"
             class="form-control"
             name="email"
             id="email"
-            placeholder="Email">
+            placeholder="Mail">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="password1">Senha</label><br>
+          <label for="password1">Password</label><br>
           <input
-              type="password1"
+              type="password"
               class="form-control"
               id="password1"
               name="password1"
-              placeholder="Senha"
+              placeholder="Password"
           />
         </div>
         <div class="form-group col-md-6">
-          <label for="password2">Confirmar senha</label><br>
+          <label for="password2">Confirm password</label><br>
           <input
-              type="password2"
+              type="password"
               class="form-control"
               id="password2"
               name="password2"
-              placeholder="Confirmar senha"
+              placeholder="Confirm password"
           />
         </div>
       </div>
@@ -75,13 +75,13 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         <div class='d-flex justify-content-center'>
-          <button type="submit" class="btn btn-primary btn-block"> Enviar </button>
+          <button type="submit" class="btn btn-primary btn-block"> Submit </button>
         </div>
       </li>
     </ul>
     <div class="card-footer text-muted">
       <div class='d-flex justify-content-center'>
-        <a href="{{url_for('auth.signin_page')}}"> Já tem cadastro? </a>
+        <p> Already have a registration? &nbsp</p><a href="{{url_for('auth.signin_page')}}"> Sign in </a>
       </div>
     </div>
   </div>

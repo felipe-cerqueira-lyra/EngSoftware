@@ -12,23 +12,23 @@
     <div class="card-body">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="user">Usuário</label>
+            <label for="user">User</label>
           <input
               type="user"
               class="form-control"
               id="user"
               name="user"
-              placeholder="Usuário"
+              placeholder="User"
           />
           </div>
           <div class="form-group col-md-6">
-            <label for="password">Senha</label><br>
+            <label for="password">Password</label><br>
             <input
                 type="password"
                 class="form-control"
                 id="password"
                 name="password"
-                placeholder="Senha"
+                placeholder="Password"
             />
           </div>
         </div>
@@ -36,7 +36,7 @@
           <div class="form-check mb-2">
             <input class="form-check-input" type="checkbox" id="autoSizingCheck">
             <label class="form-check-label" for="autoSizingCheck">
-              Lembrar
+              Remember-me
             </label>
           </div>
         </div>
@@ -44,18 +44,13 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
         <div class='d-flex justify-content-center'>
-          <button type="submit" class="btn btn-primary btn-block"> Enviar </button>
+          <button type="submit" class="btn btn-primary btn-block"> Submit </button>
         </div>
       </li>
     </ul>
     <div class="card-footer text-muted">
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <a href="{{url_for('auth.signup_page')}}">Cadastrar</a>
-        </div>
-        <div class="form-group col-md-6">
-          <a href="" >Esqueceu a senha?</label><br>
-        </div>
+      <div class='d-flex justify-content-center'>
+        <p> Don't have a registration? &nbsp</p> <a href="{{url_for('auth.signup_page')}}">Sign up</a>
       </div>
     </div>
   </div>
