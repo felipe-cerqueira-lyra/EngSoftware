@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_user, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from website.database.db import db
 
@@ -56,4 +56,18 @@ def signup_page():
 
 @bp.route('/signin', methods=['GET', 'POST'])
 def signin_page():
-    return render_template("signin.html")
+    if request.method == 'POST':
+        user = request.form.get('user')
+        password = request.form.get('password')
+        user_check = User.query.filter_by(user=user).first()
+        if user_check:
+            if check_password_hash(user_check.password, password):
+                flash('Logged in successfully!', category='success')
+                login_user(user_check, remember=True)
+                return redirect(url_for('home.home'))
+            else:
+                flash('Incorrect password, try again.', category='error')
+        else:
+            flash('User does not exist.', category='error')
+    flash('Login user below.', category='sucess')
+    return render_template("signin.html", user=current_user)
