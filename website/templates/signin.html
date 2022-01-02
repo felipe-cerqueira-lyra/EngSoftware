@@ -6,18 +6,30 @@
 <h1> Login </h1>
 
 <div class='d-flex justify-content-center'>
-  <form action="/action_page.php">
+  <form method="POST">
   <div class="card">
     <h5 class="card-header">Login</h5>
     <div class="card-body">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputEmail">Usuário</label>
-          <input type="text" class="form-control" id="user" placeholder="Usuário">
+            <label for="user">Usuário</label>
+          <input
+              type="user"
+              class="form-control"
+              id="user"
+              name="user"
+              placeholder="Usuário"
+          />
           </div>
           <div class="form-group col-md-6">
-            <label for="pass">Senha</label><br>
-            <input type="password" class="form-control" id="pass" name="password" placeholder="Senha">
+            <label for="password">Senha</label><br>
+            <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Senha"
+            />
           </div>
         </div>
         <div class="form-group">

@@ -4,37 +4,71 @@
 
 
 <div class='d-flex justify-content-center'>
-  <form action="/action_page.php">
+  <form method="POST">
   <div class="card">
     <h5 class="card-header">Cadastro de Usuário</h5>
     <div class="card-body">
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="fname">Nome</label><br>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Nome">
+          <label for="name">Nome</label><br>
+          <input
+              type="name"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder="Nome"
+          />
         </div>
         <div class="form-group col-md-6">
-          <label for="fname">Sobrenome</label><br>
-          <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Sobrenome">
+          <label for="surname">Sobrenome</label><br>
+          <input
+              type="surname"
+              class="form-control"
+              id="surname"
+              name="surname"
+              placeholder="Sobrenome"
+          />
         </div>
       </div>
       <div class="form-group">
-        <label for="inputEmail">Usuário</label>
-        <input type="text" class="form-control" id="user" placeholder="Usuário">
+        <label for="user">Usuário</label>
+        <input
+            type="user"
+            class="form-control"
+            name="user"
+            id="user"
+            placeholder="Usuário"
+        />
       </div>
       <div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Email">
+        <label for="email">Email</label>
+        <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            placeholder="Email">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="pass">Senha</label><br>
-          <input type="password" class="form-control" id="pass" name="password" placeholder="Senha">
+          <label for="password1">Senha</label><br>
+          <input
+              type="password1"
+              class="form-control"
+              id="password1"
+              name="password1"
+              placeholder="Senha"
+          />
         </div>
         <div class="form-group col-md-6">
-          <label for="confirm_pass">Confirmar senha</label><br>
-          <input type="password" class="form-control" id="confirm_pass" name="confirm_pass"
-            placeholder="Confirmar senha">
+          <label for="password2">Confirmar senha</label><br>
+          <input
+              type="password2"
+              class="form-control"
+              id="password2"
+              name="password2"
+              placeholder="Confirmar senha"
+          />
         </div>
       </div>
     </div>
