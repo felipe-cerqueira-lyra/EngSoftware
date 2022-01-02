@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="/css/master.css">
     <script src="{{ url_for('static', filename='down.js') }}"></script>
+
     <title>Anchor | {% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -21,6 +22,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('up.upload_page') }}" tabindex="-1" aria-disabled="true"> Upload</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('auth.logout') }}" tabindex="-1" aria-disabled="true">Logout</a>
+            </li>
+
+            {% else %}
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('auth.signin_page') }}" tabindex="-1" aria-disabled="true">Sign
                     in</a>
@@ -29,6 +40,7 @@
                 <a class="nav-link" href="{{ url_for('auth.signup_page') }}" tabindex="-1" aria-disabled="true">Sign
                     up</a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
