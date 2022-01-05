@@ -3,9 +3,7 @@ from flask import Flask, render_template
 
 from website.database.db import db_init, DB_NAME
 
-
 def create_app(test_config=None):
-
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
@@ -38,6 +36,6 @@ def create_app(test_config=None):
 
     @app.route('/')
     def upload():
-        return render_template("upload.html.jinja")
+        return render_template("upload.html")
 
     return app
