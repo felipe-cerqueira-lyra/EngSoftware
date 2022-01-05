@@ -1,6 +1,7 @@
-from flask import Blueprint, current_app, render_template, request
+from flask import Blueprint, current_app, render_template, request, url_for, redirect
 from website.database.db import db
 from website.database.models import File
+
 from uuid import uuid4, uuid5, NAMESPACE_DNS
 
 bp = Blueprint('up', __name__, url_prefix='/up')
@@ -8,7 +9,7 @@ static_link = 'http://127.0.0.1:5000/down/'
 
 @bp.route('/', methods=['POST', 'GET'])
 def upload_page():
-    return render_template("upload.html.jinja")
+    return render_template("upload.html")
 
 
 @bp.route('/register', methods=['POST'])
@@ -18,13 +19,12 @@ def register_file():
     name_ = file.filename
     mime_type_ = file.mimetype
     link_ = static_link + id_
-    file_ = File(id=id_, name=name_, mimetype=mime_type_, link=link_)
+    file_ = File(id=id_, name=name_, mimetype=mime_type_, link=link_, numberofdownloads=0)
     file.save(current_app.config["UPLOAD_FOLDER"] + name_)
     db.session.add(file_)
     db.session.commit()
     type = file_.mimetype.split('/')[0]
-    return render_template("download.html.jinja", archive_type=type, file=file_)
-
+    return redirect(url_for("down.download_file", id=id_))
 
 @bp.route('/display', methods=['GET'])
 def display():
