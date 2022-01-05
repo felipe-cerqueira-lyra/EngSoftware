@@ -1,0 +1,61 @@
+
+{% extends "base.html" %}
+{% block title %} Sign in {% endblock %}
+{% block content %}
+
+<h1> Login </h1>
+
+<div class='d-flex justify-content-center'>
+  <form method="POST">
+  <div class="card">
+    <h5 class="card-header">Login</h5>
+    <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="user">User</label>
+          <input
+              type="user"
+              class="form-control"
+              id="user"
+              name="user"
+              placeholder="User"
+          />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="password">Password</label><br>
+            <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Password"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+            <label class="form-check-label" for="autoSizingCheck">
+              Remember-me
+            </label>
+          </div>
+        </div>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class='d-flex justify-content-center'>
+          <button type="submit" class="btn btn-primary btn-block"> Submit </button>
+        </div>
+      </li>
+    </ul>
+    <div class="card-footer text-muted">
+      <div class='d-flex justify-content-center'>
+        <p> Don't have a registration? &nbsp</p> <a href="{{url_for('auth.signup_page')}}">Sign up</a>
+      </div>
+    </div>
+  </div>
+</form>  
+</div>
+
+{% endblock %}
+

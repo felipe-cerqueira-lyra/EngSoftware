@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %} Download {% endblock %}
+{% block content %}
+
+    <h1>Tela de Download</h1>
+    <!-- <div class="card-header bg-primary"></div> -->
+
+    <div class='d-flex justify-content-center'>
+        <div class="card text-center border-dark mb-3">
+            <div class="card-header bg-primary">
+                {{ file.name }}
+            </div>
+            {% if (archive_type == 'video') : %}
+                <video controls>
+                    <source src="{{ url_for('database.static', filename=file.name) }}" type="video/mp4">
+                </video>
+            {% elif (archive_type == 'image') : %}
+                <img src="{{ url_for('database.static', filename=file.name) }}" alt="Minha Figura">
+            {% elif (archive_type == 'audio') : %}
+                <audio controls style="width: 29.9rem;">
+                    <source src="{{ url_for('database.static', filename=file.name) }}" type="audio/mp3">
+                </audio>
+            {% endif %}
+            <p>
+            <div id="Link">{{ file.link }}</div>
+            </p>
+            <div class="card-footer text-muted container">
+                <div class="row">
+                    <div class="col-6">
+                        <form action="{{ url_for('down.download_file',id=file.id) }}" method="POST">
+                            <input type="submit" value="Download" class="btn btn-primary">
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-primary" onclick="copy_link()" name="button">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
