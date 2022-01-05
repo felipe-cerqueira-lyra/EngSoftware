@@ -21,7 +21,8 @@ def register_file():
     name_ = file.filename
     mime_type_ = file.mimetype
     link_ = static_link + id_
-    file_ = File(id=id_, name=name_, mimetype=mime_type_, link=link_, user_id=current_user.id)
+    file_ = File(id=id_, name=name_, mimetype=mime_type_,
+                 link=link_, user_id=current_user.id, numberofdownloads=0)
     file.save(current_app.config["UPLOAD_FOLDER"] + name_)
     db.session.add(file_)
     db.session.commit()
