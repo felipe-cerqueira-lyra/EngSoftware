@@ -6,3 +6,4 @@ class File(db.Model):
     name = db.Column(db.String(300), nullable=True)
     link = db.Column(db.String(300), nullable=True)
     mimetype = db.Column(db.String(300), nullable=True)
+    numberofdownloads = db.Column(db.Integer, nullable=True)
