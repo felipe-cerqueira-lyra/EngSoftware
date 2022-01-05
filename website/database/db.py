@@ -9,7 +9,6 @@ db = SQLAlchemy()
 
 bp = Blueprint('database', __name__, static_folder='static', url_prefix='/database')
 
-
 def db_init(app):
     db.init_app(app)
     if not path.exists('website/' + DB_NAME):
