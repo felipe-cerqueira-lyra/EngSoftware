@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content%}
-    <h1> {{user.name}} Files: </h1>
     <div class='d-flex justify-content-center'>
         <div class="card border-primary bg-light mb-3 w-75">
             <div class="card-header bg-primary text-white"> <h3>Your Files</h3></div>
@@ -15,7 +14,7 @@
                             Access
                         </a>
                         &nbsp
-                        <a href="#" class="badge bg-danger text-white rounded-pill">
+                        <a href="{{ url_for('home.delete_file', id=file.id) }}" class="badge bg-danger text-white rounded-pill">
                             Delete
                         </a>
                       </div>
