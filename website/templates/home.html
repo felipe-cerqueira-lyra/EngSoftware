@@ -1,5 +1,22 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content%}
-    <h1> Bem vindo, {{user.name}} </h1>
+    <h1> {{user.name}} Files: </h1>
+    <div class='d-flex justify-content-center'>
+        <div class="card border-primary bg-light mb-3 w-75 p-3">
+            <h2>User Files</h2>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for file in files %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ file.file.name }}
+                      <a href="#" class="badge bg-danger text-white rounded-pill">
+                          Deletar
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+            </div>
+          </div>
+    </div>
 {% endblock %} 
