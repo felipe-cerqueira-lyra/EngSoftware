@@ -3,16 +3,22 @@
 {% block content%}
     <h1> {{user.name}} Files: </h1>
     <div class='d-flex justify-content-center'>
-        <div class="card border-primary bg-light mb-3 w-75 p-3">
-            <h2>User Files</h2>
+        <div class="card border-primary bg-light mb-3 w-75">
+            <div class="card-header bg-primary text-white"> <h3>Your Files</h3></div>
             <div class="card-body">
                 <ul class="list-group">
                     {% for file in files %}
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                         {{ file.file.name }}
-                      <a href="#" class="badge bg-danger text-white rounded-pill">
-                          Deletar
-                      </a>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <a href="{{file.file.link}}" class="badge bg-success text-white rounded-pill">
+                            Access
+                        </a>
+                        &nbsp
+                        <a href="#" class="badge bg-danger text-white rounded-pill">
+                            Delete
+                        </a>
+                      </div>
                     </li>
                     {% endfor %}
                   </ul>
