@@ -10,7 +10,12 @@
                     <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                         {{ file.name }}
                       <div class="d-flex justify-content-between align-items-center">
-                        <a href="{{file.link}}" class="badge bg-success text-white rounded-pill">
+
+                        <a class="badge bg-success text-white rounded-pill">
+                            Num Of Downloads: {{file.numberofdownloads}}
+                        </a>
+                          &nbsp
+                          <a href="{{file.link}}" class="badge bg-success text-white rounded-pill">
                             Access
                         </a>
                         &nbsp
