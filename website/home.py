@@ -10,9 +10,10 @@ bp = Blueprint('home', __name__)
 
 
 @bp.route('/', methods=['GET', 'POST'])
-@login_required
 def home():
-    return render_template("home.html", user=current_user)
+    if current_user.is_authenticated:
+        return render_template("home.html", user=current_user)
+    return render_template("upload.html", user=current_user)
 
 
 @bp.route('/delete/<id>', methods=['GET', 'POST'])
