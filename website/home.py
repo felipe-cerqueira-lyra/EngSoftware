@@ -13,6 +13,7 @@ bp = Blueprint('home', __name__)
 def home():
     if current_user.is_authenticated:
         return render_template("home.html", user=current_user)
+    flash('Welcome to AnchorFile! You can anchor your file below.', category='sucess')
     return render_template("upload.html", user=current_user)
 
 
