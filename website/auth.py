@@ -59,11 +59,12 @@ def signin_page():
     if request.method == 'POST':
         user = request.form.get('user')
         password = request.form.get('password')
+        remember = request.form.get('remember') == 'on'
         user_check = User.query.filter_by(user=user).first()
         if user_check:
             if check_password_hash(user_check.password, password):
                 flash('Logged in successfully!', category='success')
-                login_user(user_check, remember=True)
+                login_user(user_check, remember=remember)
                 return redirect(url_for('home.home'))
             else:
                 flash('Incorrect password, try again.', category='error')
