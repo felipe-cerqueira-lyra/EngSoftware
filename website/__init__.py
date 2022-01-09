@@ -42,7 +42,7 @@ def create_app(test_config=None):
         db.create_all()
 
     login_manager = LoginManager()
-    login_manager.login_view = 'auth.signin_page'
+    login_manager.login_view = 'home.home'
     login_manager.init_app(app)
 
     @login_manager.user_loader

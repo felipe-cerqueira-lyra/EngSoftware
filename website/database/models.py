@@ -8,6 +8,15 @@ class File(db.Model):
     link = db.Column(db.String(300), nullable=True)
     mimetype = db.Column(db.String(300), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    numberofdownloads = db.Column(db.Integer, nullable=True)
+
+
+class PublicFile(db.Model):
+    id = db.Column(db.String(300), primary_key=True)
+    name = db.Column(db.String(300), nullable=True)
+    link = db.Column(db.String(300), nullable=True)
+    mimetype = db.Column(db.String(300), nullable=True)
+    numberofdownloads = db.Column(db.Integer, nullable=True)
 
 
 class User(db.Model, UserMixin):
