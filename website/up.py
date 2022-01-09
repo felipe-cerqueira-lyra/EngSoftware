@@ -1,4 +1,4 @@
-from flask import Blueprint, current_app, render_template, request
+from flask import Blueprint, current_app, render_template, request, flash
 from flask_login import current_user
 
 from website.database.db import db
@@ -29,4 +29,5 @@ def register_file():
     db.session.add(file_)
     db.session.commit()
     type = file_.mimetype.split('/')[0]
+    flash('File anchored adequately; you can download or share it below.', category='sucess')
     return render_template("download.html", archive_type=type, file=file_, user=current_user)
