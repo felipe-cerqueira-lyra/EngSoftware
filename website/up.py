@@ -2,7 +2,7 @@ from flask import Blueprint, current_app, render_template, request
 from flask_login import current_user
 
 from website.database.db import db
-from website.database.models import File
+from website.database.models import File, PublicFile
 from uuid import uuid4, uuid5, NAMESPACE_DNS
 
 bp = Blueprint('up', __name__, url_prefix='/up')
@@ -21,8 +21,10 @@ def register_file():
     name_ = file.filename
     mime_type_ = file.mimetype
     link_ = static_link + id_
-    file_ = File(id=id_, name=name_, mimetype=mime_type_,
-                 link=link_, user_id=current_user.id, numberofdownloads=0)
+    if current_user.is_authenticated:
+        file_ = File(id=id_, name=name_, mimetype=mime_type_, link=link_, user_id=current_user.id, numberofdownloads=0)
+    else:
+        file_ = PublicFile(id=id_, name=name_, mimetype=mime_type_, link=link_, numberofdownloads=0)
     file.save(current_app.config["UPLOAD_FOLDER"] + name_)
     db.session.add(file_)
     db.session.commit()
