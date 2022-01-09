@@ -1,11 +1,12 @@
 import os
 from flask import Flask, render_template
+from flask_login import LoginManager
 
 from website.database.db import db_init, DB_NAME
+from website.database.models import User
 
 
 def create_app(test_config=None):
-
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
@@ -31,13 +32,21 @@ def create_app(test_config=None):
     app.register_blueprint(down.bp)
     from . import up
     app.register_blueprint(up.bp)
+    from . import auth
+    app.register_blueprint(auth.bp)
+    from . import home
+    app.register_blueprint(home.bp)
 
     @app.before_first_request
     def create_tables():
         db.create_all()
 
-    @app.route('/')
-    def upload():
-        return render_template("upload.html.jinja")
+    login_manager = LoginManager()
+    login_manager.login_view = 'home.home'
+    login_manager.init_app(app)
+
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
 
     return app
