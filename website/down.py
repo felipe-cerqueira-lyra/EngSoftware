@@ -22,7 +22,7 @@ def download_file(id):
         if not file_:
             file_ = public_file_
             if not file_:
-                return 'No img with found'
+                return render_template("index.html", user=current_user)
         type = file_.mimetype.split('/')[0]
         return render_template("download.html", archive_type=type, file=file_, user=current_user)
     if request.method == 'POST':
